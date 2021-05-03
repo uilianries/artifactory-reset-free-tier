@@ -18,4 +18,4 @@ jobs:
       - name: Download Conan doctest/2.4.4 from atlantean
         run: |
           conan remote add atlantean https://atlantean.jfrog.io/artifactory/api/conan/atlantean
-          conan install -r atlantean doctest 2.4.4@
+          conan install -r atlantean doctest/2.4.4@
