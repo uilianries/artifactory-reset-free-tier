@@ -6,7 +6,6 @@ on:
 jobs:
   download_package:
     runs-on: ubuntu-latest
-    container: conanio/gcc10
     steps:
       - name: Download Conan doctest/2.4.4 from atlantean
         run: |
