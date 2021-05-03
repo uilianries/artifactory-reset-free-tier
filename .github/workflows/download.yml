@@ -1,0 +1,14 @@
+name: Build and Deploy
+on:
+  schedule:
+  - cron: '0 0 * * *'
+jobs:
+  download_package:
+    runs-on: ubuntu-latest
+    container: conanio/gcc10
+    steps:
+      - name: Download Conan doctest/2.4.4 from atlantean
+        run: |
+          pip install -U conan
+          conan remote add atlantean https://atlantean.jfrog.io/artifactory/api/conan/atlantean
+          conan install -r atlantean doctest 2.4.4@
