@@ -20,4 +20,4 @@ jobs:
           conan remote add atlantean https://atlantean.jfrog.io/artifactory/api/conan/atlantean
           conan install -r atlantean doctest/2.4.4@
       - name: Download counter
-        run: curl -H "Authorization: Bearer ${{ secrets.JFROG_TOKEN }}" https://atlantean.jfrog.io/artifactory/api/storage/atlantean/_/doctest/2.4.4/_/0/export/conan_export.tgz?stats
+        run: curl -H "Authorization\: Bearer ${{ secrets.JFROG_TOKEN }}" https://atlantean.jfrog.io/artifactory/api/storage/atlantean/_/doctest/2.4.4/_/0/export/conan_export.tgz?stats
