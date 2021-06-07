@@ -4,14 +4,14 @@ on:
   schedule:
   - cron: '0 0 * * *'
 jobs:
-  download_package:
+  atlantean:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - name: Install Conna
+      - name: Install Conan
         run: |
           python -m pip install --upgrade pip
           pip install conan
@@ -22,3 +22,21 @@ jobs:
       - name: Download counter
         run: |
           curl -H "Authorization: Bearer ${{ secrets.JFROG_TOKEN }}" https://atlantean.jfrog.io/artifactory/api/storage/atlantean/_/doctest/2.4.4/_/0/export/conan_export.tgz?stats
+  uilianr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Conan
+        run: |
+          python -m pip install --upgrade pip
+          pip install conan
+      - name: Download Conan doctest/2.4.4 from atlantean
+        run: |
+          conan remote add uilianr https://uilianr.jfrog.io/artifactory/api/conan/local
+          conan install -r uilianr bazel/4.0.0@uilianries/testing
+      - name: Download counter
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.JFROG_TOKEN }}" https://uilianr.jfrog.io/artifactory/api/storage/uilianries/bazel/4.0.0/testing/0/export/conan_export.tgz?stats
