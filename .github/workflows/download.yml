@@ -18,7 +18,7 @@ jobs:
       - name: Login on uilianr Repository
         run: |
           conan remote add uilianr https://uilianr.jfrog.io/artifactory/api/conan/local
-          conan user -r uilianr -p ${{ secrets.JFROG_TOKEN }} ${{ secrets.JFROG_USERNAME }}
+          conan user -r uilianr -p ${{ secrets.CONAN_PASSWORD }} ${{ secrets.CONAN_LOGIN_USERNAME }}
       - name: Download Conan zlib/1.2.11 from uilian
         run: |
           conan install -r uilianr zlib/1.2.11@
