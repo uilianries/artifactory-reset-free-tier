@@ -24,4 +24,4 @@ jobs:
           conan install -r uilianr zlib/1.2.11@
       - name: Download counter
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.JFROG_TOKEN }}" https://uilianr.jfrog.io/artifactory/api/storage/uilianries/zlib/1.2.11/testing/0/export/conan_export.tgz?stats
+          curl -H "Authorization: Bearer ${{ secrets.JFROG_TOKEN }}" https://uilianr.jfrog.io/artifactory/api/storage/local/_/zlib/1.2.11/_/0/export/conan_export.tgz?stats
